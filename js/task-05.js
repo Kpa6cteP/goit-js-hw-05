@@ -21,12 +21,12 @@ class Car {
    *  isOn - заведен ли автомобиль, значения true или false. Изначально false
    *  distance - общий киллометраж, изначально 0
    */
-  constructor({speed = 0, price, maxSpeed, isOn = false, distance = 0}) {
-    this.speed = speed;
+  constructor({price = 0, maxSpeed = 0}) {
+    this.speed = 0;
     this._price = price;
     this.maxSpeed = maxSpeed;
-    this.isOn = isOn;
-    this.distance = distance;
+    this.isOn = false;
+    this.distance = 0;
   }
 
   /*
@@ -38,14 +38,14 @@ class Car {
      return this._price;
    }
    set price(item) {
-     return this._price = item;
+     this._price = item;
    }
   /*
    * Добавь код для того чтобы завести автомобиль
    * Записывает в свойство isOn значение true
    */
   turnOn() {
-    return this.isOn = true;
+    this.isOn = true;
   }
 
   /*
@@ -54,7 +54,8 @@ class Car {
    * и сбрасывает текущую скорость в 0
    */
   turnOff() {
-    return this.isOn = false;
+    this.isOn = false;
+    this.speed = 0;
   }
 
   /*
@@ -83,7 +84,7 @@ class Car {
    * но только в том случае если машина заведена!
    */
   drive(hours) {
-    if(this.isOn = true) {
+    if(this.isOn === true) {
       return this.distance = hours * this.speed;
     }
   }
